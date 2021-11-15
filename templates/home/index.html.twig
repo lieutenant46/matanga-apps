@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matanga-Shop{% endblock %}
+
+{% block body %}
+    <div class="pt-5">
+        <div id="myCarousel" class="carousel slide pt-3" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                {% for banner in banners %}
+                    <li data-target="#dhdf" data-slide-to="{{ loop.index -1 }}"></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% for banner in banners %}
+                    <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+
+                        <div class="overlay-image" style="background-image: url('{{ asset('images/brand/') }}{{ banner.shoes[0].imageName }}')"></div>
+
+                        <div class="containers">
+                            <h1> {{ banner.name }}</h1>
+                            <p>{{ banner.description }}</p>
+                            <a href="{{ path('store') }}" class="btn btn-lg btn-primary">Decouvrir</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="#myCarousel" class="carousel-control-prev" role="button" data-slide="prev">
+                <span class="sr-only">Previous</span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a href="#myCarousel" class="carousel-control-next" role="button" data-slide="next">
+                <span class="sr-only">Next</span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+
+    <section id="brand" class="container my-5">
+        <div class="row text-center">
+            <!--Grid column-->
+            {% for city in cities %}
+                <div class="col-md-4 mb-4">
+                    <img class="rounded-circle w-50 h-75" alt="100x100" src="{{ asset('images/brand/') }}{{ city.imageName }}"/>
+                    <h3 class="my-5">{{ city.name }} </h3>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <hr>
+
+    <section id="features" class="my-5 pb-5">
+        <div class="container-fluid px-5">
+            <div class="py-2">
+                <h2 class="text-center">Nos Nouveautés</h2>
+                <p class="text-center">Decouvrez les nouvelles chaussure tendences du moment</p>
+            </div>
+            <div class="row ml-5 mr-5 ">
+                {% for shoe in shoes %}
+                    <div class="col-6 col-sm-3 mt-4">
+                        <div class="product card h-100 shadow-sm">
+                            <img src="{{ asset('images/brand/') }}{{ shoe.imageName }}" class="img-fluid" alt="Image" style="height: 250px">
+                            <div class="label-top shadow-sm">Nike</div>
+                            <div class="card-body">
+                                <div class="clearfix mb-3">
+                                    <span class="float-start price-hp">{{ shoe.price }} €</span>
+                                </div>
+                                <h5 class="card-title">{{ shoe.description}}</h5>
+                                <div class="text-center my-4">
+                                    <a href="{{ path('shoe_show', {'id': shoe.id}) }}" class="btn btn-warning buy-btn">Decouvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <section id="banner" class="mt-5 pt-5" style="background-image: url({{ asset('images/banner1.jpg') }});">
+        <div class="sp-margin">
+            <h4>Selectiion de la saison</h4>
+            <h1>Restez Stylé et chic<br> A moins 20%</h1>
+            <a href="{{ path('home') }}" class="text-uppercase btn btn-primary">Découvrir</a>
+        </div>
+    </section>
+
+    <section>
+        <div class="py-5">
+            <div class="container-fluid">
+                <div>
+                    <h2 class="text-center">Équipez-vous</h2>
+                    <p class="text-center">Decouvrez les nouvelles chaussure tendences du moment</p>
+                </div>
+            </div>
+        </div>
+        <div class="row ml-5 mr-5 py-5">
+            <div class="col-6 col-sm-4 mt-4">
+                <div class="bg-image h-100 p-5 img-fluid" style="background-image: url({{ asset('images/men.jpg') }}); background-repeat: no-repeat;background-size: cover;">
+                    <div class="" style="padding-top: 300px">
+                        <h1 class="text-light">Hommes</h1>
+                        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit.tempora veritatis voluptas!</p>
+                        <button class="btn btn-primary btn-circle btn-md"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 mt-4">
+                <div class="bg-image h-100 p-5 img-fluid" style="background-image: url({{ asset('images/woman.jpg') }}); background-repeat: no-repeat;background-size: cover;">
+                    <div class="" style="padding-top: 300px">
+                        <h1 class="text-light">Femmes</h1>
+                        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit.tempora veritatis voluptas!</p>
+                        <button class="btn btn-primary btn-circle btn-md"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 mt-4">
+                <div class="bg-image h-100 p-5 img-fluid" style="background-image: url({{ asset('images/kid.jpg') }}); background-repeat: no-repeat;background-size: cover;">
+                    <div class="" style="padding-top: 300px">
+                        <h1 class="text-light">Enfants</h1>
+                        <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit.tempora veritatis voluptas!</p>
+                        <button class="btn btn-primary btn-circle btn-md"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <a href="#">
+            <div class="mx-5">
+                <h3 class="pt-5 pb-3 ml-3">Ne passez pas à côté</h3>
+                <div class="mx-3">
+                    <img src="{{ asset('images/brand/') }}{{ topShoe.imageName }}" alt="" class="img-fluid w-100" style="height: 75rem"/>
+                    <div class="text-center">
+                        <h1 class="my-2">{{ topShoe.name }}</h1>
+                        <p>Decouvrez les nouvelles chaussure tendences du moment</p>
+                        <button class="btn btn-primary mb-5">Voir</button>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
+{% endblock %}

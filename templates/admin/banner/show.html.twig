@@ -1,0 +1,38 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Banner{% endblock %}
+
+{% block body %}
+    <h1>Banner</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ banner.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ banner.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ banner.description }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ banner.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ banner.createdAt ? banner.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('banner_index') }}">back to list</a>
+
+    <a href="{{ path('banner_edit', {'id': banner.id}) }}">edit</a>
+
+    {{ include('banner/_delete_form.html.twig') }}
+{% endblock %}

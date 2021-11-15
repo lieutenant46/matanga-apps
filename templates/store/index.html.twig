@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello StoreController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/style1.css') }}">
+
+{% endblock %}
+
+{% block body %}!
+    <div class="container-fluid bg-primary h-25">
+        <div class="row justify-content-center " >
+            <div class="col-md-6 text-center" style="padding: 150px">
+                <h1 class="heading-section text-light">Boutique</h1>
+            </div>
+        </div>
+    </div>
+    <div class="pt-5">
+        <div class="row m-5">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recherche</h5>
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-9">
+                <div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">Tout</button>
+                    <button class="button" data-filter=".Homme">Homme</button>
+                    <button class="button" data-filter=".Femme">Femme</button>
+                    <button class="button" data-filter=".Enfant">Enfants</button>
+                </div>
+
+                <div class="grid mt-5">
+                    {% for shoe in shoes %}
+                        <div class="ml-2 element-item transition {{ shoe.person }}" data-category="transition">
+                            <div class="product card h-100 shadow-sm">
+                                <img src="{{ asset('images/brand/') }}{{ shoe.imageName }}" class="img-fluid" alt="Image" style="height: 250px">
+                                <div class="label-top shadow-sm">{{ shoe.person }}</div>
+                                <div class="card-body">
+                                    <div class="clearfix mb-3">
+                                        <span class="float-start price-hp">{{ shoe.price }} €</span>
+                                    </div>
+                                    <h5 class="card-title">{{ shoe.description |length > 30 ?  shoe.description|slice(0, 30) ~ '...' : shoe.description  }}</h5>
+                                    <div class="text-center my-4">
+                                        <a href="{{ path('shoe_show', {'id': shoe.id}) }}" class="btn btn-warning buy-btn">Acheter</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+
+    <script src="{{ asset('js/script1.js') }}"></script>
+
+{% endblock %}

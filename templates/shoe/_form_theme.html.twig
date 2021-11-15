@@ -1,0 +1,16 @@
+{% block _shoes_shoes_images_widget %}
+    <ul id="product-images-fields-list"
+        data-prototype="{{ form_widget(prototype)|e }}"
+        data-widget-tags="{{ '<li></li>'|e }}"
+        data-widget-counter="{{ value|length }}"
+    >
+        {% for key,shoesImageForm in formfgf.children %}
+            {{ form_widget(shoesImageForm) }}
+
+        {% endfor %}
+    </ul>
+
+    <button type="button"
+            class="add-another-collection-widget"
+            data-list-selector="#product-images-fields-list">Add another Product Image</button>
+{% endblock %}

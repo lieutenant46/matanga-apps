@@ -1,0 +1,41 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Banner index{% endblock %}
+
+{% block body %}
+    <h1>Banner index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>IsActive</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for banner in banners %}
+            <tr>
+                <td>{{ banner.id }}</td>
+                <td>{{ banner.name }}</td>
+                <td>{{ banner.description }}</td>
+                <td>{{ banner.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ banner.createdAt ? banner.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('banner_show', {'id': banner.id}) }}">show</a>
+                    <a href="{{ path('banner_edit', {'id': banner.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('banner_new') }}">Create new</a>
+{% endblock %}

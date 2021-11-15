@@ -1,0 +1,42 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="pt-5">
+            <h2>Contacts </h2>
+            <span>Messages envoyés</span>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Objet</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contact in contacts %}
+                        <tr>
+                            <th class="col-md-1">{{ loop.index }}</th>
+                            <td class="col-md-2">{{ contact.name }}</td>
+                            <td class="col-md-2">{{ contact.subject }}</td>
+                            <td class="col-md-1">{{ contact.email }}</td>
+                            <td class="col-md-4"> {{ contact.message }}</td>
+                            <td class="col-md-2 text-center">
+                                <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+                                <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

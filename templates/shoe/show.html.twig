@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shoe{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/product.css') }}">
+{% endblock %}
+{% block body %}
+    <section class="container-fluid sproduct my-5 p-5">
+        <div class="row px-5">
+            <div class="col-lg-5 col-12">
+                <img src="{{ asset('images/brand/') }}{{ shoe.imageName }}" width="100%" class="small-img img-fluid" id="mainImg" style="height: 700px">
+                <div class="small-img-group mt-3">
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/brand/') }}{{ shoe.imageName2 }}" width="100%" class="small-img" height="150">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/brand/') }}{{ shoe.imageName3 }}" width="100%" class="small-img"  height="150">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/brand/') }}{{ shoe.imageName4 }}" width="100%" class="small-img"  height="150">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="{{ asset('images/brand/') }}{{ shoe.imageName5 }}" width="100%" class="small-img" height="150">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12 mt-5">
+
+                <h6>{{shoe.name}}</h6>
+                <h2>{{shoe.price}} €</h2>
+
+                {% set current_path = 'shoe/' ~ app.request.get('id') %}
+
+                <label for="select"></label>
+                <select name="shoeSize" id="select" class="my-3">
+                    <option value="" disabled selected>Choisissez la pointure</option>
+                    {% for size in sizes%}
+                        <option value="{{ size.size }}">{{ size.size }}</option>
+                    {% endfor %}
+                </select>
+                <input type="number" name="qte" value="1" id="qte">
+                {% if app.user %}
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Ajouter au panier</button>
+                {% else %}
+                    <a href="{{ path('app_login', {'prev_URI': current_path }) }}" class="btn btn-primary">Ajouter au panier</a>
+                {% endif %}
+                <h4 class="my-5">Description du produit</h4><span class="productId d-none">{{shoe.id}}</span>
+                <div>{{ shoe.description }}</div>
+
+            </div>
+        </div>
+    </section>
+    <section id="features" class="my-5 pb-5">
+        <div class="container-fluid px-5">
+            <div class="py-2">
+                <h2 class="text-center">Chaussures pouvant vous interesser</h2>
+                <p class="text-center">Choisis selon vos criteres de recherches</p>
+            </div>
+            <div class="row ml-5 mr-5 ">
+                {% for S_shoe in shoes %}
+                    <div class="col-6 col-sm-3 mt-4">
+                        <div class="product card h-100 shadow-sm">
+                            <img src="{{ asset('images/brand/') }}{{ S_shoe.imageName }}" class="img-fluid" alt="Image" style="height: 250px">
+                            <div class="label-top shadow-sm">Nike</div>
+                            <div class="card-body">
+                                <div class="clearfix mb-3">
+                                    <span class="float-start price-hp">{{ S_shoe.price }} €</span>
+                                </div>
+                                <h5 class="card-title">{{ S_shoe.description}}</h5>
+                                <div class="text-center my-4">
+                                    <a href="{{ path('shoe_show', {'id': S_shoe.id}) }}" class="btn btn-warning buy-btn">Decouvrir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="myModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Mon Achat</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Quantite</th>
+                            <th scope="col">P-U</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td><img src="{{ asset('images/brand/') }}{{ shoe.imageName }}" width="80" class="small-img img-fluid" id="mainImg" height="80" ></td>
+                            <td>{{ shoe.name }}</td>
+                            <td>01</td>
+                            <td>{{ shoe.price }} </td>
+                            <td>{{ shoe.price }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btnAddCart btn btn-primary">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/checkout.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

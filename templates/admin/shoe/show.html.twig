@@ -1,0 +1,74 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Shoe{% endblock %}
+
+{% block body %}
+    <h1>Shoe</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ shoe.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ shoe.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ shoe.description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ shoe.price }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ shoe.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ shoe.createdAt ? shoe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ shoe.updatedAt ? shoe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Person</th>
+                <td>{{ shoe.person }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ shoe.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>IsTop</th>
+                <td>{{ shoe.isTop ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ImageName2</th>
+                <td>{{ shoe.imageName2 }}</td>
+            </tr>
+            <tr>
+                <th>ImageName3</th>
+                <td>{{ shoe.imageName3 }}</td>
+            </tr>
+            <tr>
+                <th>ImageName4</th>
+                <td>{{ shoe.imageName4 }}</td>
+            </tr>
+            <tr>
+                <th>ImageName5</th>
+                <td>{{ shoe.imageName5 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_shoe_index') }}">back to list</a>
+
+    <a href="{{ path('admin_shoe_edit', {'id': shoe.id}) }}">edit</a>
+
+    {{ include('admin/shoe/_delete_form.html.twig') }}
+{% endblock %}

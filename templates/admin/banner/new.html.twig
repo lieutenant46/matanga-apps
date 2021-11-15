@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}New Banner{% endblock %}
+
+{% block body %}
+    <h1>Create new Banner</h1>
+
+    {{ include('admin/banner/_form.html.twig') }}
+
+    <a href="{{ path('banner_index') }}">back to list</a>
+{% endblock %}

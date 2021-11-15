@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter{% endblock %}
+
+{% block body %}
+    <section class="my-5 py-3">
+        <div class="">
+            <div class="container-fluid bg-primary h-25">
+                <div class="row justify-content-center py-5">
+                    <div class="col-md-6 text-center mb-5">
+                        <h1 class="heading-section text-light">Nous Contacter</h1>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="wrapper">
+                            <div class="row mb-5">
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fa fa-map-marker text-primary"></span>
+                                        </div>
+                                        <div class="text">
+                                            <span class="text-light">12 Rue de la convention</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fa fa-phone text-primary"></span>
+                                        </div>
+                                        <div class="text">
+                                            <span class="text-light">+33 7 58 10 87 40</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center">
+                                            <i class="fas fa-envelope text-primary"></i>
+                                        </div>
+                                        <div class="text">
+                                            <span class="text-light">contact@matanga.fr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="dbox w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fa fa-globe text-primary"></span>
+                                        </div>
+                                        <div class="text">
+                                            <span class="text-light">matanga-fr</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-5 p-5">
+                <div class="m-5 row">
+                    <div class="col-md-7 card">
+                        <div class="contact-wrap w-100 p-md-5 p-4">
+                            <h3 class="mb-4">Laissez nous un message</h3>
+                            <div id="form-message-warning" class="mb-4"></div>
+
+                            {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form_row(form.name) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.email) }}
+                                </div>
+                                <div class="col-md-12">
+                                    {{ form_row(form.subject) }}
+                                </div>
+                                <div class="col-md-12">
+                                    {{ form_row(form.message) }}
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form_row(form.submit, { 'label': 'Envoyer' }) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                    <div class="col-md-5 d-flex align-items-stretch">
+                        <div class="info-wrap w-100 p-5 img bg-primary" style="background-image: url({{ asset('images/loc.png') }}); background-size: cover"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div style="background-image: url({{ asset('img/prev.jpg') }})">
+        <form method="post">
+            {% if error %}
+            <div>{{ error.messageKey }}</div>
+            {% endif %}
+            <input type="text">
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+{% endblock %}

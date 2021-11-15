@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Size{% endblock %}
+
+{% block body %}
+    <h1>Size</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ size.id }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ size.size }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_size_index') }}">back to list</a>
+
+    <a href="{{ path('admin_size_edit', {'id': size.id}) }}">edit</a>
+
+    {{ include('admin/size/_delete_form.html.twig') }}
+{% endblock %}

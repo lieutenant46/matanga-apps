@@ -1,0 +1,59 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Shoe index{% endblock %}
+
+{% block body %}
+    <h1>Shoe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Person</th>
+                <th>IsActive</th>
+                <th>IsTop</th>
+                <th>ImageName2</th>
+                <th>ImageName3</th>
+                <th>ImageName4</th>
+                <th>ImageName5</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shoe in shoes %}
+            <tr>
+                <td>{{ shoe.id }}</td>
+                <td>{{ shoe.name }}</td>
+                <td>{{ shoe.description }}</td>
+                <td>{{ shoe.price }}</td>
+                <td>{{ shoe.imageName }}</td>
+                <td>{{ shoe.createdAt ? shoe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ shoe.updatedAt ? shoe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ shoe.person }}</td>
+                <td>{{ shoe.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ shoe.isTop ? 'Yes' : 'No' }}</td>
+                <td>{{ shoe.imageName2 }}</td>
+                <td>{{ shoe.imageName3 }}</td>
+                <td>{{ shoe.imageName4 }}</td>
+                <td>{{ shoe.imageName5 }}</td>
+                <td>
+                    <a href="{{ path('admin_shoe_show', {'id': shoe.id}) }}">show</a>
+                    <a href="{{ path('admin_shoe_edit', {'id': shoe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_shoe_new') }}">Create new</a>
+{% endblock %}

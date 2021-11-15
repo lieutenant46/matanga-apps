@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('styles/dasbvhboard.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/fav.ico') }}"><title>Hello, world!</title>
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 px-1 bg-dark position-fixed" id="sticky-sidebar">
+            <div class="nav flex-column flex-nowrap vh-100 overflow-auto text-white p-2">
+                <div class="text p-5"> Matanga Shop </div>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li> <a href="{{ path('admin-home') }}" class="nav-link text-white "> <i class="fa fa-dashboard"></i><span class="ms-2">Dashboard</span> </a> </li>
+                    <li> <a href="{{ path('admin_contact_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Contacts</span> </a> </li>
+                    <li> <a href="{{ path('banner_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Bannieres</span> </a> </li>
+                    <li> <a href="{{ path('brand_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Marques</span> </a> </li>
+                    <li> <a href="{{ path('admin_category_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Categorie</span> </a> </li>
+                    <li> <a href="{{ path('admin_city_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">localite</span> </a> </li>
+                    <li> <a href="{{ path('admin_shoe_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Chaussures</span> </a> </li>
+                    <li> <a href="{{ path('admin_size_index') }}" class="nav-link text-white"> <i class="fa fa-first-order"></i><span class="ms-2">Pointures</span> </a> </li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <strong> {{ app.user.firstname}} </strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 offset-2 " id="main">
+            <div class="p-5">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+{% block javascripts %}
+{% endblock %}
+<script src="{{ asset('js/script1.js') }}"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>
+
