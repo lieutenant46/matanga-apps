@@ -1,5 +1,7 @@
 # matanga-apps
 Application de vente de chaussures
+C'est une application PHP/Bootstrap
+Dévélopée grâce à Symfony framework dans sa version 5.3.1
 #Instruction pour faire fonctionner le projet
 
 # **PREREQUIS :**
